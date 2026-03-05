@@ -1,0 +1,284 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #06171e;
+  min-height: 100dvh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* #region #########Fonts Section */
+
+@font-face {
+  font-family: "Figtree";
+  src: url("./assets/fonts/Figtree-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("./assets/fonts/Figtree-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+/* #endregion #########Fonts Section */
+
+/* #region #########Header Section */
+.header_wapper {
+  display: flex;
+  width: 100%;
+  height: 80px;
+  background-color: #09212a;
+}
+
+header {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 20px clamp(48px, 3vw, 140px) 0;
+}
+
+.HImg1 {
+  width: 220px;
+  height: 40px;
+}
+
+/* #endregion #########Header Section */
+
+/* #region #########Main Section */
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* wichtig: untereinander statt nebeneinander */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.header_title {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-family: "Figtree", sans-serif;
+  font-weight: 800;
+  font-size: 60px;
+  margin-bottom: 16px;
+}
+
+.img_wp {
+  width: 100%;
+  max-width: 1920px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding-inline: clamp(48px, 3vw, 140px);
+  margin: 0 auto;
+}
+
+.img-card {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 0 0 150px; /* verhindert Strecken auf 100% */
+}
+
+.img-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+  border: #178bb6 2px solid;
+}
+
+.img-card:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* #endregion #########Main Section */
+
+/* #region #########Footer Section */
+.footer_wapper {
+  width: 100%;
+}
+
+footer {
+  width: 100%;
+}
+
+.footer_stage {
+  position: relative;
+  width: 100%;
+  height: 130px; /* Höhe vom unteren Footer-Bild */
+  overflow: hidden;
+}
+
+.footer_bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.footer_text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 230px;
+  height: 65px;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+}
+/* #endregion #########Footer Section */
+
+/* 320px bis 775px */
+@media (min-width: 320px) and (max-width: 775px) {
+  main {
+    justify-content: flex-start;
+    padding-top: 12px;
+  }
+
+  .header_title {
+    font-size: clamp(28px, 9vw, 40px);
+    margin-bottom: 12px;
+    text-align: center;
+    line-height: 1.1;
+  }
+
+  .img_wp {
+    max-width: 100%;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .img-card {
+    flex: 1 1 calc(50% - 12px);
+    max-width: 160px;
+    width: auto;
+  }
+
+  .img-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+  }
+
+  .footer_stage {
+    height: 90px;
+  }
+
+  .footer_text {
+    width: 170px;
+    height: auto;
+  }
+
+  header {
+    padding: 20px 12px 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .HImg1 {
+    width: 180px;
+    height: 32px;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1232px) and (max-width: 1469px) {
+  .img_wp {
+    padding-inline: clamp(75px, 5vw, 75px);
+  }
+
+  header {
+    padding: 20px 75px 0;
+  }
+}
+
+/* 776px bis 1280px */
+@media (min-width: 776px) and (max-width: 1280px) {
+  .header_title {
+    font-size: clamp(40px, 5vw, 54px);
+    margin-bottom: 14px;
+  }
+
+  .img_wp {
+    gap: 14px;
+    padding-block: 16px;
+    padding-inline: clamp(20px, 4vw, 64px);
+  }
+
+  .img-card {
+    flex: 0 0 150px;
+  }
+
+  .img-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .footer_stage {
+    height: 110px;
+  }
+
+  .footer_text {
+    width: 210px;
+    height: auto;
+  }
+
+  header {
+    padding: 20px clamp(20px, 4vw, 64px) 0;
+  }
+}
+
+/* 1280px bis 1920px */
+@media (min-width: 1280px) and (max-width: 1920px) {
+  .header_title {
+    font-size: 60px;
+  }
+
+  .img_wp {
+    gap: 16px;
+    padding-block: 20px;
+    padding-inline: clamp(32px, 5vw, 140px);
+  }
+
+  .img-card {
+    flex: 0 0 150px;
+  }
+
+  .img-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .footer_stage {
+    height: 130px;
+  }
+
+  .footer_text {
+    width: 230px;
+    height: 65px;
+  }
+
+  header {
+    padding: 20px clamp(32px, 5vw, 140px) 0;
+  }
+}

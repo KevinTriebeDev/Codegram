@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="dialog.css" />
+    <title>FotoGramm</title>
+  </head>
+  <body onload="init()">
+    <div class="header_wapper">
+      <header>
+        <img class="HImg1" src="assets/img/Capa_1.png" alt="" />
+      </header>
+    </div>
+    <main>
+      <div id="ImG" class="img_wp"></div>
+      <dialog id="dialog">
+        <div class="dialog_content">
+          <h2 id="dialog_title"></h2>
+          <button id="bTnClose">
+            <img src="./assets/img/close.png" alt="" />
+          </button>
+
+          <img id="dialog_image" src="" alt="" />
+        </div>
+
+        <div id="dialog_controls">
+          <img
+            id="img_arrow_left"
+            src="./assets/img/Button_left.png"
+            alt="Vorheriges Bild"
+            role="button"
+            tabindex="0"
+          />
+          <p id="dialog_counter">1/12</p>
+          <img
+            id="img_arrow_right"
+            src="./assets/img/Button_right.png"
+            alt="Nächstes Bild"
+            role="button"
+            tabindex="0"
+          />
+        </div>
+      </dialog>
+    </main>
+    <div class="footer_wapper">
+      <footer>
+        <div class="footer_stage">
+          <img class="footer_bg" src="./assets/img/footer_logo.png" alt="" />
+          <img class="footer_text" src="./assets/img/footer_text.png" alt="" />
+        </div>
+      </footer>
+    </div>
+  </body>
+  <script src="./script.js"></script>
+</html>
