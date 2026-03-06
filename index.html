@@ -16,38 +16,40 @@
     </div>
     <main>
       <div id="ImG" class="img_wp"></div>
-      <dialog id="dialog">
-        <div class="dialog_content">
-          <h2 id="dialog_title"></h2>
-          <button
-            id="bTnClose"
-            onclick="closeDialog()"
-            aria-label="Dialog schliessen"
-          >
-            <img src="./assets/img/close.png" alt="" />
-          </button>
+      <dialog onclick="closeDialog()" id="dialog">
+        <div class="div_wp" onclick="event.stopPropagation()">
+          <div class="dialog_content">
+            <h2 id="dialog_title"></h2>
+            <button
+              id="bTnClose"
+              onclick="closeDialog()"
+              aria-label="Dialog schliessen"
+            >
+              <img src="./assets/img/close.png" alt="" />
+            </button>
 
-          <img id="dialog_image" src="" alt="" />
-        </div>
+            <img id="dialog_image" src="" alt="" />
+          </div>
 
-        <div id="dialog_controls">
-          <button
-            id="img_arrow_left"
-            type="button"
-            onclick="prevImage()"
-            aria-label="Vorheriges Bild"
-          >
-            <img src="./assets/img/Button_left.png" alt="" />
-          </button>
-          <p id="dialog_counter">1/12</p>
-          <button
-            id="img_arrow_right"
-            type="button"
-            onclick="nextImage()"
-            aria-label="Naechstes Bild"
-          >
-            <img src="./assets/img/Button_right.png" alt="" />
-          </button>
+          <div id="dialog_controls">
+            <button
+              id="img_arrow_left"
+              type="button"
+              onclick="prevImage()"
+              aria-label="Vorheriges Bild"
+            >
+              <img src="./assets/img/Button_left.png" alt="" />
+            </button>
+            <p id="dialog_counter">1/12</p>
+            <button
+              id="img_arrow_right"
+              type="button"
+              onclick="nextImage()"
+              aria-label="Naechstes Bild"
+            >
+              <img src="./assets/img/Button_right.png" alt="" />
+            </button>
+          </div>
         </div>
       </dialog>
     </main>

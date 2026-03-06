@@ -1,15 +1,8 @@
-renderHeaderTitle();
-
-
-
-const myDialog = document.getElementById("dialog");
-const myImgs = document.getElementById("ImG");
-const dialogTitle = document.getElementById("dialog_title");
-const dialogImage = document.getElementById("dialog_image");
-const dialogCounter = document.getElementById("dialog_counter");
-const btnClose = document.getElementById("bTnClose");
-let closeFlashTimeout;
-
+const getDialog = () => document.getElementById("dialog");
+const getImgsWrapper = () => document.getElementById("ImG");
+const getDialogTitle = () => document.getElementById("dialog_title");
+const getDialogImage = () => document.getElementById("dialog_image");
+const getDialogCounter = () => document.getElementById("dialog_counter");
 const imageArray = [
   "./assets/img/img_1.jpg",
   "./assets/img/img_2.png",
@@ -24,7 +17,6 @@ const imageArray = [
   "./assets/img/img_11.jpg",
   "./assets/img/img_12.jpg",
 ];
-
 const imageTitleArray = [
   "JS Code 1",
   "JS Code 2",
@@ -39,16 +31,11 @@ const imageTitleArray = [
   "JS Code 11",
   "JS Code 12",
 ];
-
-
-
 let currentIndex = 0;
 
 function init() {
-  if (myDialog) myDialog.onclick = handleDialogClick;
-
+  renderHeaderTitle();
   renderImages();
-
 }
 
 function renderHeaderTitle() {
@@ -59,9 +46,8 @@ function renderHeaderTitle() {
   main.innerHTML = `<h1 class="header_title">My CodeGram</h1>` + main.innerHTML;
 }
 
-
-
 function renderImages() {
+  const myImgs = getImgsWrapper();
   if (!myImgs) return;
   myImgs.innerHTML = "";
   for (let i = 0; i < imageArray.length; i++) {
@@ -74,6 +60,7 @@ function renderImages() {
 }
 
 function openDialog(index) {
+  const myDialog = getDialog();
   if (!myDialog) return;
 
   currentIndex = index;
@@ -81,9 +68,11 @@ function openDialog(index) {
   myDialog.showModal();
 }
 
-function closeDialog() {
+function closeDialog(event) {
+  const myDialog = getDialog();
   if (!myDialog) return;
   myDialog.close();
+  event.stopPropagation();
 }
 
 function prevImage() {
@@ -97,43 +86,15 @@ function nextImage() {
 }
 
 function renderDialogContent() {
+  const dialogTitle = getDialogTitle();
+  const dialogImage = getDialogImage();
+  const dialogCounter = getDialogCounter();
   if (!dialogTitle || !dialogImage || !dialogCounter) return;
 
   dialogTitle.textContent = imageTitleArray[currentIndex];
   dialogImage.src = imageArray[currentIndex];
   dialogImage.alt = imageTitleArray[currentIndex];
   dialogCounter.textContent = `${currentIndex + 1}/${imageArray.length}`;
-}
-
-function handleDialogClick(event) {
-  if (!myDialog) return;
-
-  if (event.target === myDialog) {
-    closeDialog();
-    return;
-  }
-
-  const clickedButton = event.target.closest(
-    "#bTnClose, #img_arrow_left, #img_arrow_right",
-  );
-
-  if (!clickedButton) {
-    flashCloseButton();
-  }
-}
-
-function flashCloseButton() {
-  if (!btnClose) return;
-
-  btnClose.classList.add("is-flashing");
-
-  if (closeFlashTimeout) {
-    clearTimeout(closeFlashTimeout);
-  }
-
-  closeFlashTimeout = setTimeout(function () {
-    btnClose.classList.remove("is-flashing");
-  }, 220);
 }
 
 function handleGalleryKey(event, index) {

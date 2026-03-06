@@ -98,6 +98,7 @@ main {
   display: block;
   border-radius: 10px;
   border: #178bb6 2px solid;
+  cursor: pointer;
 }
 
 .img-card:hover {
