@@ -104,10 +104,23 @@
 #img_arrow_right {
   width: 64px;
   height: 64px;
-  object-fit: contain;
+  padding: 0;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   transition: transform 0.2s ease;
   cursor: pointer;
+}
+
+#img_arrow_left img,
+#img_arrow_right img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  display: block;
 }
 
 #img_arrow_left:hover,
@@ -129,13 +142,18 @@
   font-weight: 700;
 }
 
-
 @media (max-width: 404px) {
   #dialog {
     width: 100%;
-    height: auto;
+    height: 80dvh;
     padding: 24px;
   }
+
+  .dialog_content {
+    gap: 12px;
+    padding-top: 80px;
+  }
+
 
   #dialog_title {
     font-size: 22px;
@@ -143,17 +161,24 @@
 
   #dialog_image {
     width: 100%;
-    height: min(40vh, 250px);
+    height: auto;
     max-height: 60vh;
+
   }
 
   #dialog_controls {
-    margin-top: 50px;
+    margin-top: 100px;
     gap: 20px;
   }
 
   #img_arrow_left,
   #img_arrow_right {
+    width: 48px;
+    height: 48px;
+  }
+
+  #img_arrow_left img,
+  #img_arrow_right img {
     width: 48px;
     height: 48px;
   }
@@ -165,16 +190,21 @@
 }
 
 @media (min-width: 405px) and (max-width: 768px) {
-
   #dialog {
     width: 100%;
-    height: auto;
+    height: 100dvh;
     padding: 15px;
+  }
+
+  .dialog_content {
+    gap: 12px;
+    padding-top: 80px;
   }
 
   #dialog_image {
     width: 100%;
-    height: min(40vh, 250px);
+      height: auto;
+      max-height: 60vh;
     max-height: 60vh;
   }
 
@@ -182,6 +212,4 @@
     margin-top: 50px;
     gap: 20px;
   }
-
-
 }

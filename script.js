@@ -1,14 +1,16 @@
-let myDialog = document.getElementById("dialog");
-let myImgs = document.getElementById("ImG");
-let dialogTitle = null;
-let dialogImage = null;
-let dialogCounter = null;
-let btnClose = null;
-let btnPrev = null;
-let btnNext = null;
-let closeFlashTimeout = null;
+renderHeaderTitle();
 
-let imageArray = [
+
+
+const myDialog = document.getElementById("dialog");
+const myImgs = document.getElementById("ImG");
+const dialogTitle = document.getElementById("dialog_title");
+const dialogImage = document.getElementById("dialog_image");
+const dialogCounter = document.getElementById("dialog_counter");
+const btnClose = document.getElementById("bTnClose");
+let closeFlashTimeout;
+
+const imageArray = [
   "./assets/img/img_1.jpg",
   "./assets/img/img_2.png",
   "./assets/img/img_3.jpg",
@@ -23,7 +25,7 @@ let imageArray = [
   "./assets/img/img_12.jpg",
 ];
 
-let imageTitleArray = [
+const imageTitleArray = [
   "JS Code 1",
   "JS Code 2",
   "JS Code 3",
@@ -38,7 +40,16 @@ let imageTitleArray = [
   "JS Code 12",
 ];
 
+
+
 let currentIndex = 0;
+
+function init() {
+  if (myDialog) myDialog.onclick = handleDialogClick;
+
+  renderImages();
+
+}
 
 function renderHeaderTitle() {
   const main = document.querySelector("main");
@@ -48,37 +59,11 @@ function renderHeaderTitle() {
   main.innerHTML = `<h1 class="header_title">My CodeGram</h1>` + main.innerHTML;
 }
 
-function init() {
-  renderHeaderTitle();
 
-  myDialog = document.getElementById("dialog");
-  myImgs = document.getElementById("ImG");
-
-  dialogTitle = document.getElementById("dialog_title");
-  dialogImage = document.getElementById("dialog_image");
-  dialogCounter = document.getElementById("dialog_counter");
-  btnClose = document.getElementById("bTnClose");
-  btnPrev = document.getElementById("img_arrow_left");
-  btnNext = document.getElementById("img_arrow_right");
-
-  if (btnClose) btnClose.onclick = closeDialog;
-  if (btnPrev) {
-    btnPrev.onclick = prevImage;
-    btnPrev.onkeydown = handleArrowKeydown;
-  }
-  if (btnNext) {
-    btnNext.onclick = nextImage;
-    btnNext.onkeydown = handleArrowKeydown;
-  }
-  if (myDialog) myDialog.onclick = handleDialogClick;
-  if (myDialog) myDialog.onkeydown = handleDialogKeydown;
-
-  renderImages();
-}
 
 function renderImages() {
+  if (!myImgs) return;
   myImgs.innerHTML = "";
-
   for (let i = 0; i < imageArray.length; i++) {
     myImgs.innerHTML += `
             <div class="img-card" role="button" tabindex="0" aria-label="${imageTitleArray[i]} öffnen" onclick="openDialog(${i})" onkeydown="handleGalleryKey(event, ${i})">
@@ -89,12 +74,15 @@ function renderImages() {
 }
 
 function openDialog(index) {
+  if (!myDialog) return;
+
   currentIndex = index;
   renderDialogContent();
   myDialog.showModal();
 }
 
 function closeDialog() {
+  if (!myDialog) return;
   myDialog.close();
 }
 
@@ -152,19 +140,5 @@ function handleGalleryKey(event, index) {
   if (event.key === "Enter" || event.key === " ") {
     event.preventDefault();
     openDialog(index);
-  }
-}
-
-function handleArrowKeydown(event) {
-  if (event.key === "Enter" || event.key === " ") {
-    event.preventDefault();
-    event.target.click();
-  }
-}
-
-function handleDialogKeydown(event) {
-  if (event.key === "Escape") {
-    event.preventDefault();
-    closeDialog();
   }
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="dialog.css" />
+    <link rel="icon" type="image/png" href="./assets/img/Group.png" />
     <title>FotoGramm</title>
   </head>
   <body onload="init()">
@@ -18,7 +19,11 @@
       <dialog id="dialog">
         <div class="dialog_content">
           <h2 id="dialog_title"></h2>
-          <button id="bTnClose">
+          <button
+            id="bTnClose"
+            onclick="closeDialog()"
+            aria-label="Dialog schliessen"
+          >
             <img src="./assets/img/close.png" alt="" />
           </button>
 
@@ -26,21 +31,23 @@
         </div>
 
         <div id="dialog_controls">
-          <img
+          <button
             id="img_arrow_left"
-            src="./assets/img/Button_left.png"
-            alt="Vorheriges Bild"
-            role="button"
-            tabindex="0"
-          />
+            type="button"
+            onclick="prevImage()"
+            aria-label="Vorheriges Bild"
+          >
+            <img src="./assets/img/Button_left.png" alt="" />
+          </button>
           <p id="dialog_counter">1/12</p>
-          <img
+          <button
             id="img_arrow_right"
-            src="./assets/img/Button_right.png"
-            alt="Nächstes Bild"
-            role="button"
-            tabindex="0"
-          />
+            type="button"
+            onclick="nextImage()"
+            aria-label="Naechstes Bild"
+          >
+            <img src="./assets/img/Button_right.png" alt="" />
+          </button>
         </div>
       </dialog>
     </main>
