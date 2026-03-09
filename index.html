@@ -6,17 +6,18 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="dialog.css" />
     <link rel="icon" type="image/png" href="./assets/img/Group.png" />
+    <script src="./script.js" defer></script>
     <title>FotoGramm</title>
   </head>
-  <body onload="init()">
+  <body onload="myinit()">
     <div class="header_wapper">
       <header>
-        <img class="HImg1" src="assets/img/Capa_1.png" alt="" />
+        <img class="HImg1" src="./assets/img/Capa_1.png" alt="" />
       </header>
     </div>
     <main>
-      <div id="ImG" class="img_wp"></div>
-      <dialog onclick="closeDialog()" id="dialog">
+      <div id="myImg" class="img_wp"></div>
+      <dialog onclick="closeDialog()" id="myDialog">
         <div class="div_wp" onclick="event.stopPropagation()">
           <div class="dialog_content">
             <h2 id="dialog_title"></h2>
@@ -62,5 +63,5 @@
       </footer>
     </div>
   </body>
-  <script src="./script.js"></script>
+  
 </html>

@@ -1,8 +1,8 @@
-const getDialog = () => document.getElementById("dialog");
-const getImgsWrapper = () => document.getElementById("ImG");
-const getDialogTitle = () => document.getElementById("dialog_title");
-const getDialogImage = () => document.getElementById("dialog_image");
-const getDialogCounter = () => document.getElementById("dialog_counter");
+const myDialog = document.getElementById("myDialog");
+const myImgWrapper = document.getElementById("myImg");
+const myDialogTitle = document.getElementById("dialog_title");
+const myDialogImage = document.getElementById("dialog_image");
+const myDialogCounter = document.getElementById("dialog_counter");
 const imageArray = [
   "./assets/img/img_1.jpg",
   "./assets/img/img_2.png",
@@ -33,9 +33,8 @@ const imageTitleArray = [
 ];
 let currentIndex = 0;
 
-function init() {
+function myinit() {
   renderHeaderTitle();
-  renderImages();
 }
 
 function renderHeaderTitle() {
@@ -47,32 +46,31 @@ function renderHeaderTitle() {
 }
 
 function renderImages() {
-  const myImgs = getImgsWrapper();
-  if (!myImgs) return;
-  myImgs.innerHTML = "";
-  for (let i = 0; i < imageArray.length; i++) {
-    myImgs.innerHTML += `
-            <div class="img-card" role="button" tabindex="0" aria-label="${imageTitleArray[i]} öffnen" onclick="openDialog(${i})" onkeydown="handleGalleryKey(event, ${i})">
-                <img src="${imageArray[i]}" alt="${imageTitleArray[i]}">
-            </div>
-        `;
+  if (!myImgWrapper) {
   }
+  let html = "";
+  for (let i = 0; i < imageArray.length; i++) {
+    html += `
+      <div class="img-card" onclick="openDialog(${i})">
+        <img src="${imageArray[i]}" alt="${imageTitleArray[i]}">
+      </div>`;
+  }
+  myImgWrapper.innerHTML = html;
 }
+renderImages();
 
 function openDialog(index) {
-  const myDialog = getDialog();
   if (!myDialog) return;
-
   currentIndex = index;
   renderDialogContent();
   myDialog.showModal();
+  document.body.style.overflowY = "hidden";
 }
 
 function closeDialog(event) {
-  const myDialog = getDialog();
   if (!myDialog) return;
   myDialog.close();
-  event.stopPropagation();
+  document.body.style.overflowY = "auto"
 }
 
 function prevImage() {
@@ -86,15 +84,8 @@ function nextImage() {
 }
 
 function renderDialogContent() {
-  const dialogTitle = getDialogTitle();
-  const dialogImage = getDialogImage();
-  const dialogCounter = getDialogCounter();
-  if (!dialogTitle || !dialogImage || !dialogCounter) return;
+  if (!myDialogTitle || !myDialogImage || !myDialogCounter) return;
 
-  dialogTitle.textContent = imageTitleArray[currentIndex];
-  dialogImage.src = imageArray[currentIndex];
-  dialogImage.alt = imageTitleArray[currentIndex];
-  dialogCounter.textContent = `${currentIndex + 1}/${imageArray.length}`;
 }
 
 function handleGalleryKey(event, index) {
