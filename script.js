@@ -34,19 +34,12 @@ const imageTitleArray = [
 let currentIndex = 0;
 
 function myinit() {
-  renderHeaderTitle();
-}
-
-function renderHeaderTitle() {
-  const main = document.querySelector("main");
-  if (!main) return;
-  if (document.querySelector(".header_title")) return;
-
-  main.innerHTML = `<h1 class="header_title">My CodeGram</h1>` + main.innerHTML;
+  renderImages();
 }
 
 function renderImages() {
   if (!myImgWrapper) {
+    return;
   }
   let html = "";
   for (let i = 0; i < imageArray.length; i++) {
@@ -57,7 +50,6 @@ function renderImages() {
   }
   myImgWrapper.innerHTML = html;
 }
-renderImages();
 
 function openDialog(index) {
   if (!myDialog) return;
@@ -70,7 +62,7 @@ function openDialog(index) {
 function closeDialog(event) {
   if (!myDialog) return;
   myDialog.close();
-  document.body.style.overflowY = "auto"
+  document.body.style.overflowY = "auto";
 }
 
 function prevImage() {
@@ -85,7 +77,10 @@ function nextImage() {
 
 function renderDialogContent() {
   if (!myDialogTitle || !myDialogImage || !myDialogCounter) return;
-
+  myDialogTitle.textContent = imageTitleArray[currentIndex];
+  myDialogImage.src = imageArray[currentIndex];
+  myDialogImage.alt = imageTitleArray[currentIndex];
+  myDialogCounter.textContent = `${currentIndex + 1}/${imageArray.length}`;
 }
 
 function handleGalleryKey(event, index) {

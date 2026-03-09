@@ -1,4 +1,4 @@
-#dialog {
+#myDialog {
   width: 92vw;
   height: 90dvh;
   position: fixed;
@@ -14,7 +14,7 @@
   overflow: hidden;
 }
 
-#dialog::backdrop {
+#myDialog::backdrop {
   background: rgba(0, 0, 0, 0.6);
 }
 
@@ -152,7 +152,7 @@
 }
 
 @media (max-width: 404px) {
-  #dialog {
+  #myDialog {
     width: 96vw;
     height: 90dvh;
     padding: 5%;
@@ -178,7 +178,7 @@
 }
 
 @media (min-width: 405px) and (max-width: 768px) {
-  #dialog {
+  #myDialog {
     width: 94vw;
     height: 88dvh;
     padding: 4.5%;
